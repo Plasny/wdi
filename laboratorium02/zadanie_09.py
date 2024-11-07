@@ -4,14 +4,18 @@ from typing import List
 
 
 def fill(lt: List[int]) -> List[int]:
-    nlt = [lt[0]]
-    for n in range(len(lt) - 1):
+    last_idx = len(lt) - 1
+    nlt = []
+
+    for n in range(last_idx):
         if lt[n] > lt[n + 1]:
-            nlt.extend([x for x in range(lt[n] - 1, lt[n + 1] - 1, -1)])
+            nlt.extend([x for x in range(lt[n], lt[n + 1], -1)])
         elif lt[n] < lt[n + 1]:
-            nlt.extend([x for x in range(lt[n] + 1, lt[n + 1] + 1, 1)])
+            nlt.extend([x for x in range(lt[n], lt[n + 1], 1)])
         else:
             nlt.append(lt[n])
+
+    nlt.append(lt[last_idx])
 
     return nlt
 
@@ -44,6 +48,11 @@ def main():
     print(lt)
     print(fill(lt), end='\n\n')
     assert fill(lt) == lt
+
+    lt = [-1, 2, -3, 0]
+    print(lt)
+    print(fill(lt), end='\n\n')
+    assert fill(lt) == [-1, 0, 1, 2, 1, 0, -1, -2, -3, -2, -1, 0]
 
 
 if __name__ == "__main__":

@@ -10,13 +10,23 @@ def fx_prim(x: float) -> float:
     return 3 * x**2
 
 
+def abs(n: float) -> float:
+    if n < 0:
+        return -n
+
+    return n
+
+
 def sqrt3(n1: float, eps: float, verbose=False) -> float:
     n0 = 1.0
 
+    if n1 == 0:
+        return 0
+
     if verbose:
         print('\n  Wzór Newtona-Raphsona (na pierwiastek 3 stopnia):')
-        print('  x_k+1 = x_k - (f(x_k) - a)/f\'(x_k)')
-        print('  x_k+1 = x_k - (x_k**3 - a)/(3 * x_k**2)\n')
+        print('  x_(k+1) = x_k - (f(x_k) - a)/f\'(x_k)')
+        print('  x_(k+1) = x_k - (x_k**3 - a)/(3 * x_k**2)\n')
 
     while (abs(n0**3 - n1) > eps):
         x_k1 = n0 - fx(n0, n1) / fx_prim(n0)
@@ -45,7 +55,7 @@ def round_number_to_eps(n: float, eps: float):
 
 
 def main():
-    eps = 0.000001
+    eps = 1e-07
     n = float(input('Wprowadź liczbę, której pierwiastek 3 stopnia'
                     'chcesz obliczyć '))
 
