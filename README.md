@@ -2,6 +2,19 @@
 
 Repozytorium z zadaniami z ćwiczeń z wprowadzenia do informatyki.
 
+## Setup
+
+If you have nix and direnv instlled run the following commands after cloning.
+
+```sh
+nix develop
+uv venv
+uv pip install -r */requirements.txt
+direnv allow
+```
+
+After that everything should be setup automatically after you enter this directory.
+
 ---
 
 ## Ex. 1

@@ -12,8 +12,9 @@
       devShells.default = pkgs.mkShell {
         buildInputs = with pkgs; [
           python313
-          python313Packages.pip
-          python313Packages.virtualenv
+          # python313Packages.pandas
+          uv
+          ruff
         ];
       
         shellHook = ''
